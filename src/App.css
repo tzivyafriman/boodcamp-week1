@@ -1,8 +1,24 @@
 .App {
   text-align: center;
 }
-
-.App-logo {
+tbody{
+  color: black;
+  size:8px;
+  border-width: 8px;
+  border-color: black;
+}
+tr{
+  background-color: #00000033;;
+  border-width: 8px;
+  border-color: black;
+  
+}
+td{
+  border-width: 8px;
+  border-color: black;
+  padding: 20px;
+}
+/* .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
@@ -35,4 +51,4 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */
