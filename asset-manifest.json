@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/boodcamp-week1/static/css/main.6e82ff31.css",
+    "main.js": "/boodcamp-week1/static/js/main.9d4658f3.js",
+    "static/js/787.28cb0dcd.chunk.js": "/boodcamp-week1/static/js/787.28cb0dcd.chunk.js",
+    "index.html": "/boodcamp-week1/index.html",
+    "main.6e82ff31.css.map": "/boodcamp-week1/static/css/main.6e82ff31.css.map",
+    "main.9d4658f3.js.map": "/boodcamp-week1/static/js/main.9d4658f3.js.map",
+    "787.28cb0dcd.chunk.js.map": "/boodcamp-week1/static/js/787.28cb0dcd.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6e82ff31.css",
+    "static/js/main.9d4658f3.js"
+  ]
+}
