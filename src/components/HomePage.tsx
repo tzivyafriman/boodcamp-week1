@@ -34,7 +34,6 @@ class HomePage extends Component /*<any, baseComponent>*//*<{},any>*/
     this.setState({nameForSearch: s})
   }
 
-
   render() 
   {
     return (
