@@ -1,15 +1,14 @@
 import * as React from 'react'
 import logo from './logo.svg';
-import './App.css';
 import Home from './components/Home';
-import Tryy from './components/Tryy';
+import './App.css';
+import { Component } from 'react';
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+//componenets
 import Details from './components/Details';
 import HomePage from './components/HomePage';
 import About from './components/About';
-// import { BrowserRouter, Route, Router } from 'react-router-dom';
-import { Component } from 'react';
-// import { Link } from "react-router-dom";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import IDetails from './components/Details';
 
 class App extends Component <{},any> {
   render() {
@@ -20,10 +19,10 @@ class App extends Component <{},any> {
     <Router>
       <div className="App">
         <header>
-          <Link to="/">Home</Link>
-          <Link to="/HomePage">Home</Link>  
-          <Link to="/Details">Details</Link> 
-          <Link to="/About">About</Link>
+          {/* <Link to="/">Home1 </Link> */}
+          <Link to="/HomePage" id="menuLink">Home</Link>  
+          {/* <Link to="/Details">Details </Link>  */}
+          <Link to="/About" id="menuLink">About</Link>
         </header>
         <Routes>
           <Route path="/" element={<HomePage />} />
@@ -32,8 +31,9 @@ class App extends Component <{},any> {
           {/* <Route path="/Details/1" element={<Details />} /> */}
           <Route path="/About" element={<About />} />
           <Route path="/HomePage" /*element={<HomePage />} */>
-            <Route path=":id" element={<Details /> } />
+            <Route path=":id" element={<IDetails /*someProps={1}*//> } />
           </Route>
+          <Route path="/HomePage/:id" element={<IDetails /*someProps={1}*//>} />
         </Routes>
       </div>
     </Router>
@@ -42,6 +42,9 @@ class App extends Component <{},any> {
     )
   }
 }
+export default App;
+
+
 
 // <Router>
         // <Route exact path={'/'}> <Home/></Route>
@@ -68,4 +71,4 @@ class App extends Component <{},any> {
 //   );
 // }
 
-export default App;
+//<Route /*key="/tryy"*/ path="/tryy" element={<About someProps={this.state.propsToChild} />} />

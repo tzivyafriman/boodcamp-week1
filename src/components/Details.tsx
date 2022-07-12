@@ -1,14 +1,19 @@
-import React, { Component } from 'react';
+import { notEqual } from 'node:assert';
+import { parse } from 'node:path/win32';
 import Product from '../data/Product';
+import React, { Component } from 'react';
+import { NavigateOptions, Params } from 'react-router-dom';
 import { Products } from '../data/products';
-class Details extends Component{
+//componenets
+import ForRouter from './ForRouter';
 
-    // constructor(props: number) {
-    //     super(props);
+const IDetails = ForRouter( class Details extends Component<IForRouter>
+{
+    //שליפת קוד נוכחי מה-params 
+    currentId = parseInt(this.props.params.id? this.props.params.id: "0")-1;
+    //דרך נוספת לשליפה פרמיטבית מה-url
+    // = parseInt(document.URL.split('/')[4]) -1 ;
 
-    // }
-    currentId = parseInt(document.URL.split('/')[4]) -1 ;
-    // currentId = 0;
     p = Products[this.currentId];
     nameP = Products[this.currentId].name;
     id = Products[this.currentId].id.toString();
@@ -16,47 +21,66 @@ class Details extends Component{
     description = Products[this.currentId].description;
 
     state={
+        product: Products[this.currentId] ,
         name: Products[this.currentId].name,
         price: Products[this.currentId].price,
         description: Products[this.currentId].description
     }
+
+    //האם נכון יותר לעבוד עם אתחול כל משתני המחלקה ב-ctot?
+    // constructor ()
+    // {
+    //     super();
+    //     this.state={
+    //         product: Products[this.currentId] ,
+    //         name: Products[this.currentId] ,
+    //         price: Products[this.currentId].price,
+    //         description: Products[this.currentId].description
+    //     }
+    // }
     
-    updateProduct(/*, name: string, description: string, price: number*/)
+    updateProduct()
     {
-        console.log('i update product');
-        console.log('currentId: ' + this.currentId);
-        // const updatedProduct = {
-        //     name: (document.getElementById('updateName') as HTMLInputElement).value ,
-            // id: id,
-            // price: price,
-            // description: description
-        // }
-        //this.setState({name: updatedProduct.name});
-         
-        //delete ocrrent product
-        // Products.splice((Products.findIndex(p => p.id === id)), 1);
+        // // console.log('i update product!');
+        // console.log('currentId: ' + this.currentId);
         Products[Products.findIndex(p => p.id === this.currentId+1)].name = this.state.name;
         Products[Products.findIndex(p => p.id === this.currentId+1)].price = this.state.price;
         Products[Products.findIndex(p => p.id === this.currentId+1)].description = this.state.description;
-        
-        console.log(Products);
+        // console.log(Products);
     }
     
-    handleChange = (/*event: any*/) => {
-        //const { name, value } = event.target;
-        console.log('i handlechange');
-        // let nt =  ;
-        this.setState({name: (document.getElementById('nametttt') as HTMLInputElement).value});
-        // this.setState({price: (document.getElementById('price') as HTMLInputElement).value});
-        // this.setState({description: (document.getElementById('description') as HTMLInputElement).value});
-        console.log('this.state.name: ' +this.state.name);
-        // this.updateProduct();
+    handleChange = () => 
+    {
+    // console.log('i handlechange!');
+        if((document.getElementById('name') as HTMLInputElement).value.toString() === '' )
+        {
+            console.log('i in if empty string')
+        }else
+        {
+            this.setState({name: (document.getElementById('name') as HTMLInputElement).value});
+        } 
+        if((document.getElementById('price') as HTMLInputElement).value.toString() === '' )
+        {
+            console.log('i in if empty string')
+        }else
+        {
+            this.setState({price: (document.getElementById('price') as HTMLInputElement).value});
+        } 
+        if((document.getElementById('description') as HTMLInputElement).value.toString() === '' )
+        {
+            console.log('i in if empty string')
+        }else
+        {
+            this.setState({description: (document.getElementById('description') as HTMLInputElement).value});
+        } 
+        this.updateProduct();
     }
 
     render() {
         return(
             <>
-            <h1>i details</h1>
+            {this.updateProduct()}
+            <h1>{Products[this.currentId].name}</h1>
             <form>
                 {
                     <>
@@ -69,28 +93,36 @@ class Details extends Component{
                     <label>description: </label><br></br>
                     <input id="description" type="text" placeholder={this.description} /*onChange={(e) => this.handleChange(e)}*/></input><br></br>
                     <br></br>
-                    {/* <button onClick={()=>this.updateProduct()}>edit--save my change</button>
-                    <button>try</button> */}
-                    {console.log('i load details')}
-                    {/* <p>{Products[0].name}</p> */}
+                    {/* {console.log('i load details')} */}
                     </>
                 }
             </form>
-            <button onClick={() => {
-                // this.handleChange();
-                this.setState({name: (document.getElementById('name') as HTMLInputElement).value,
-                price: (document.getElementById('price') as HTMLInputElement).value,
-                description: (document.getElementById('description') as HTMLInputElement).value,
-                }); 
-            this.updateProduct()
+            <button onClick={(e) => {
+                this.handleChange();
+             // this.updateProduct()
             }}>edit- save my change</button>
+            {/* { console.log('this.props.params.id: '+this.props.params.id)} */}
             </>
         )
     }
+})
+export default IDetails;
 
+export interface IForRouter  
+{
+    location: Location,
+    navigate: NavigateOptions,
+    params: Params<string>,
 }
-export default Details;
 
+
+//delete current product
+// Products.splice((Products.findIndex(p => p.id === id)), 1);
+
+// type a = tyoeOf(ForRouter);
+// export interface ITDetailsProps{
+//     Item : string;
+// }
 
 {/* <p>{this.nameP}</p>
             <p>{this.id}</p>
