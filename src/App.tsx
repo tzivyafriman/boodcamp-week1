@@ -9,8 +9,13 @@ import Details from './components/Details';
 import HomePage from './components/HomePage';
 import About from './components/About';
 import IDetails from './components/Details';
-
+import TryMe from './components/TryMe';
+import { SignUp}  from './components/SignUp';
+import { Login} from './components/Login';
+import  CarouselDemo  from './components/CarouselDemo';
+import ShowAll from './components/ShowAll';
 class App extends Component <{},any> {
+
   render() {
     <HomePage/>
     return (
@@ -23,13 +28,22 @@ class App extends Component <{},any> {
           <Link to="/HomePage" id="menuLink">Home</Link>  
           {/* <Link to="/Details">Details </Link>  */}
           <Link to="/About" id="menuLink">About</Link>
+          <Link to="/SignUp" id="menuLink">SignUp</Link>
+          <Link to="/Login" id="menuLink">Login</Link>
+          <Link to="/products" id="menuLink">carusel</Link>
+          <Link to="/ShowAll" id="menuLink">show all</Link>
         </header>
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/SignUp" element={<SignUp />} />
+          <Route path="/Login" element={<Login />} />
+          <Route path="/products" element={<CarouselDemo />} />
+          <Route path="/ShowAll" element={<ShowAll />} />
           <Route path="/HomePage" element={<HomePage />} />
           <Route path="/Details" element={<Details />} />
           {/* <Route path="/Details/1" element={<Details />} /> */}
           <Route path="/About" element={<About />} />
+          <Route path="/Try" element={<TryMe />} />
           <Route path="/HomePage" /*element={<HomePage />} */>
             <Route path=":id" element={<IDetails /*someProps={1}*//> } />
           </Route>
