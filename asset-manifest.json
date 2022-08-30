@@ -1,15 +1,19 @@
 {
   "files": {
-    "main.css": "/boodcamp-week1/static/css/main.57fed5f9.css",
-    "main.js": "/boodcamp-week1/static/js/main.e90f2f07.js",
+    "main.css": "/boodcamp-week1/static/css/main.16a794c5.css",
+    "main.js": "/boodcamp-week1/static/js/main.b67f44ad.js",
     "static/js/787.28cb0dcd.chunk.js": "/boodcamp-week1/static/js/787.28cb0dcd.chunk.js",
+    "static/media/primeicons.svg": "/boodcamp-week1/static/media/primeicons.c6e2053303524e39530c.svg",
+    "static/media/primeicons.eot": "/boodcamp-week1/static/media/primeicons.7fc4d8e224d1ff1b9c62.eot",
+    "static/media/primeicons.woff": "/boodcamp-week1/static/media/primeicons.449aa8c65cdc5c2a8686.woff",
+    "static/media/primeicons.ttf": "/boodcamp-week1/static/media/primeicons.91bacab1f083f2795272.ttf",
     "index.html": "/boodcamp-week1/index.html",
-    "main.57fed5f9.css.map": "/boodcamp-week1/static/css/main.57fed5f9.css.map",
-    "main.e90f2f07.js.map": "/boodcamp-week1/static/js/main.e90f2f07.js.map",
+    "main.16a794c5.css.map": "/boodcamp-week1/static/css/main.16a794c5.css.map",
+    "main.b67f44ad.js.map": "/boodcamp-week1/static/js/main.b67f44ad.js.map",
     "787.28cb0dcd.chunk.js.map": "/boodcamp-week1/static/js/787.28cb0dcd.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.57fed5f9.css",
-    "static/js/main.e90f2f07.js"
+    "static/css/main.16a794c5.css",
+    "static/js/main.b67f44ad.js"
   ]
 }
