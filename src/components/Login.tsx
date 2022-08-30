@@ -26,7 +26,8 @@ import { url } from 'node:inspector';
 
 export const Login  = () => {
 
-const loginWithGoogle = () => { 
+const loginWithGoogle = () => 
+{ 
     console.log("Login  with Google");
     <a href='http://localhost:8001/auth/google'></a> 
     //   <Route  path="http://localhost:8001/auth/google" />
@@ -70,7 +71,7 @@ const loginAndGetToken = () =>
         //console.log(JSON.stringify(d));
         //mytoken = JSON.stringify(response.json()) 
         sessionStorage.setItem('token', res.data );
-        return res/*.json()*/;
+        return res;
     })
     
 
