@@ -4,7 +4,7 @@ import 'primereact/resources/primereact.css';
 import 'primeflex/primeflex.css';
 // import '../../index.css';
 import ReactDOM from 'react-dom';
-
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import React, { useEffect, useState } from 'react';
 import { useFormik } from 'formik';
 import { InputText } from 'primereact/inputtext';
@@ -18,8 +18,64 @@ import { Divider } from 'primereact/divider';
 import { classNames } from 'primereact/utils';
 import { CountryService } from '../data/CountryService';
 import '../App.css';
+import { resolve } from 'node:dns';
+import { request } from 'express';
+import axios from "axios";
+import { url } from 'node:inspector';
+// const passport = require("passport");
 
 export const Login  = () => {
+
+const loginWithGoogle = () => { 
+    console.log("Login  with Google");
+    <a href='http://localhost:8001/auth/google'></a> 
+    //   <Route  path="http://localhost:8001/auth/google" />
+    console.log("after href Login with Google");
+  
+    //passport.authenticate("google", { scope: ["email", "profile"] }) 
+    // const opts = {
+    //     method: 'GET',      
+    //     headers: {'Content-Type': 'application/json',},
+    // };
+    // fetch('http://localhost:8000/api/loginWithGoogle/', opts).then((response) => {
+    //     // return response.json();
+    //     console.log(response.json());
+    // })
+    // axios.get('http://localhost:8001/auth/google', opts)
+      
+    // .then((res) => 
+    // {
+        //console.log(response.json());
+        //console.log(response);
+        // console.log(res);
+    // });
+}
+
+
+const loginAndGetToken = () => 
+{
+    let userEmail = formik.values.email;
+    let userPassword = formik.values.password;
+    let mytoken = "not"
+    const newUser = { email: userEmail, password: userPassword }
+    const opts = {
+        method: 'POST',      
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(newUser)
+    };
+    axios.post/*fetch*/('http://localhost:8000/api/users/', opts).then((res) => {
+        //console.log(response.json());
+        //console.log(response);
+        console.log(res);
+        //console.log(JSON.stringify(d));
+        //mytoken = JSON.stringify(response.json()) 
+        sessionStorage.setItem('token', res.data );
+        return res/*.json()*/;
+    })
+    
+
+}
+    
     const [countries, setCountries] = useState([]);
     const [showMessage, setShowMessage] = useState(false);
     const [formData, setFormData] = useState({/**/name:'',email:''/**/});
@@ -40,15 +96,13 @@ export const Login  = () => {
         },
         validate: (data) => {
             let errors = {
-                name: '',
                 email: '',
-                password: '',
-                accept: ''
+                password: ''
             };
 
-            if (!data.name) {
-                errors.name = 'Name is required.';
-            }
+            // if (!data.name) {
+            //     errors.name = 'Name is required.';
+            // }
 
             if (!data.email) {
                 errors.email = 'Email is required.';
@@ -61,9 +115,9 @@ export const Login  = () => {
                 errors.password = 'Password is required.';
             }
 
-            if (!data.accept) {
-                errors.accept = 'You need to agree to the terms and conditions.';
-            }
+            // if (!data.accept) {
+            //     errors.accept = 'You need to agree to the terms and conditions.';
+            // }
 
             return errors;
         },
@@ -153,7 +207,10 @@ export const Login  = () => {
                             <label htmlFor="accept" className={classNames({ 'p-error': isFormFieldValid('accept') })}>I agree to the terms and conditions*</label>
                         </div> */}
 
-                        <Button type="submit" label="Submit" className="mt-2" />
+                        <Button onClick={loginAndGetToken} type="submit" label="Submit" className="mt-2" />
+                        <Button onClick={loginWithGoogle} type="submit" label="loginWithGoogle" className="mt-2" />
+                        <a href='http://localhost:8001/auth/google'>func</a>
+                        {/* {<Link to={"/HomePage/" }>try-me </Link>} */}
                     </form>
                 </div>
             </div>
